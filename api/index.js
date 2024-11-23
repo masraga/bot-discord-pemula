@@ -13,7 +13,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post("/interactions", (req, res) => {
+app.post("/interactions", verifyKeyMiddleware(process.env.PUBLIC_KEY), (req, res) => {
   const {type, member} = req.body;
   if(type == InteractionType.PING) {
     res.send({type: InteractionResponseType.PONG})
