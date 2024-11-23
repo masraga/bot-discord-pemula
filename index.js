@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 app.post("/interactions", verifyKeyMiddleware(process.env.PUBLIC_KEY), (req, res) => {
   const {type, member} = req.body;
+  console.log(req.body)
   if(type == InteractionType.PING) {
     res.send({type: InteractionResponseType.PONG})
   }
