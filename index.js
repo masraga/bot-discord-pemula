@@ -34,6 +34,10 @@ app.get("/", (req, res, next) => {
   res.send({status: 200, msg: "OK"});
 })
 
+app.get("/test", (req, res, next) => {
+  res.send({status: 200, msg: "OK"});
+})
+
 app.listen(port, () => {
   console.log(`[log] server is running in port ${port}`)
 })
