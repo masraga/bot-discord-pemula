@@ -14,15 +14,6 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/interactions", (req, res) => {
-
-})
-
-app.get("/", (req, res, next) => {
-  res.send({status: 200, msg: "OK"});
-})
-
-/** endpoint yang digunakan untuk interaksi */
-app.post("/interaksi", verifyKeyMiddleware(process.env.PUBLIC_KEY), (req, res) => {
   const {type, member} = req.body;
   if(type == InteractionType.PING) {
     res.send({type: InteractionResponseType.PONG})
@@ -39,6 +30,8 @@ app.post("/interaksi", verifyKeyMiddleware(process.env.PUBLIC_KEY), (req, res) =
   }
 })
 
-app.listen(port, () => {
-  console.log(`[log] bot telah aktif pada url http://localhost:${port}`);
+app.get("/", (req, res, next) => {
+  res.send({status: 200, msg: "OK"});
 })
+
+module.exports = app;
